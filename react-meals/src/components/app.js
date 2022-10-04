@@ -11,7 +11,7 @@ function App() {
 		<>
 			<Navbar cart={cart} />
 			<Menu items={data} cart={cart} setCart={setCart} />
-			<CartModal cart={cart} />
+			<CartModal cart={cart} setCart={setCart} />
 		</>
 	);
 }

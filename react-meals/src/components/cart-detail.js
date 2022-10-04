@@ -1,10 +1,45 @@
-import CartItem from "./cart-item";
+function CartDetail({ cart, setCart }) {
+	function increment(cartItem) {
+		cartItem.quantity++;
+		setCart([...cart]);
+	}
 
-function CartDetail({ cart }) {
+	function decrement(cartItem) {
+		cartItem.quantity--;
+		setCart([...cart]);
+	}
+
 	return (
 		<div className="list-group">
-			{cart.map(({ item, quantity }) => (
-				<CartItem item={item} quantity={quantity} />
+			{cart.map((cartItem) => (
+				<a
+					href="#"
+					className="list-group-item list-group-item-action"
+					aria-current="true"
+				>
+					<div className="d-flex justify-content-between">
+						<div>
+							<h5 className="mb-1">{cartItem.item.name}</h5>
+							<small>${cartItem.item.price}</small>
+							{cartItem.quantity}
+						</div>
+						<div>
+							<button
+								className="btn btn-outline-danger"
+								onClick={() => decrement(cartItem)}
+							>
+								-
+							</button>
+							<button
+								className="btn btn-small btn-outline-danger"
+								onClick={() => increment(cartItem)}
+							>
+								+
+							</button>
+						</div>
+					</div>
+					<hr />
+				</a>
 			))}
 		</div>
 	);
