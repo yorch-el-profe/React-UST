@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Sushi",
+    "price": 199,
+    "description": "Preparado con nuestro mejor salmón"
+  },
+  {
+    "name": "Schnitzel",
+    "price": 99,
+    "description": "Una especialidad Alemana"
+  },
+  {
+    "name": "Enchiladas",
+    "price": 129,
+    "description": "Platillo típico mexicano"
+  }
+]
