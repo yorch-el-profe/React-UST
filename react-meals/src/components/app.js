@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./navbar";
 import Menu from "./menu";
+import CartModal from "./cart-modal";
 import data from "../menu.json";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 		<>
 			<Navbar cart={cart} />
 			<Menu items={data} cart={cart} setCart={setCart} />
+			<CartModal cart={cart} />
 		</>
 	);
 }

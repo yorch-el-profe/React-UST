@@ -7,7 +7,11 @@ function Navbar({ cart }) {
 				<a className="navbar-brand" href="#">
 					React Meals
 				</a>
-				<div className={styles.cart}>
+				<div
+					className={styles.cart}
+					data-bs-toggle="modal"
+					data-bs-target="#cartModal"
+				>
 					<span className="text-white">Carrito</span>
 					<span className="ms-3 badge bg-danger">
 						{cart.reduce((acc, val) => acc + val.quantity, 0)}
