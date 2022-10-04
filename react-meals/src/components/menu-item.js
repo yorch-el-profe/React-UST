@@ -1,13 +1,17 @@
 import { useRef } from "react";
 
-function MenuItem({ item, cart }) {
+function MenuItem({ item, cart, setCart }) {
 	const input = useRef(null);
 
 	function addHandler(event) {
 		event.preventDefault();
-		const quantity = parseInt(input.current.value);
+		if (input.current.value) {
+			const quantity = parseInt(input.current.value);
 
-		cart.push({ item, quantity });
+			setCart([...cart, { item, quantity }]);
+
+			input.current.value = "";
+		}
 	}
 
 	return (
