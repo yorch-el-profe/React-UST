@@ -22,7 +22,7 @@ function MenuItem({ item, cart, setCart }) {
 		>
 			<div className="d-flex w-100 justify-content-between">
 				<h5 className="mb-1">{item.name}</h5>
-				<div className="d-flex flex-column">
+				<div className="d-flex flex-column cart">
 					<span>
 						Cantidad
 						<input type="number" className="form-control" ref={input} />

@@ -1,31 +1,17 @@
+import styles from "../styles/navbar.module.css";
+
 function Navbar({ cart }) {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-danger">
-			<div className="container-fluid">
+			<div className="container-fluid px-5">
 				<a className="navbar-brand" href="#">
 					React Meals
 				</a>
-				Carrito{" "}
-				<span className="badge bg-danger">
-					{cart.reduce((acc, val) => acc + val.quantity, 0)}
-				</span>
-				<button
-					className="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span className="navbar-toggler-icon"></span>
-				</button>
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-						<li className="nav-item">
-							<a className="nav-link active" aria-current="page" href="#"></a>
-						</li>
-					</ul>
+				<div className={styles.cart}>
+					<span className="text-white">Carrito</span>
+					<span className="ms-3 badge bg-danger">
+						{cart.reduce((acc, val) => acc + val.quantity, 0)}
+					</span>
 				</div>
 			</div>
 		</nav>
