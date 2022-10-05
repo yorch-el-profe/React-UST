@@ -1,6 +1,25 @@
-.cart {
+.navbar {
+  height: 80px;
+  background-color: #e53935;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  color: white;
+}
+
+.navbar > figure {
   background-color: #b71c1c;
-  padding: 8px 20px;
+  padding: 10px 30px;
   border-radius: 20px;
-  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.navbar > figure > small {
+  background-color: #e53935;
+  border-radius: 50%;
+  padding: 5px 10px;
+  margin-left: 10px;
 }

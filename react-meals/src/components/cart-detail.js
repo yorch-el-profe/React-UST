@@ -25,13 +25,13 @@ function CartDetail({ cart, setCart }) {
 						</div>
 						<div>
 							<button
-								className="btn btn-outline-danger"
+								className="btn btn-sm btn-outline-danger"
 								onClick={() => decrement(cartItem)}
 							>
 								-
 							</button>
 							<button
-								className="btn btn-small btn-outline-danger"
+								className="btn btn-sm btn-outline-danger"
 								onClick={() => increment(cartItem)}
 							>
 								+
