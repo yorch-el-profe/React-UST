@@ -3,6 +3,8 @@ import actions from "./actions";
 function reducer(state, action) {
 	let meal, quantity, item, id;
 
+	console.log(action);
+
 	switch (action.type) {
 		case actions.ADD_MEAL:
 			meal = action.payload.meal;
@@ -42,6 +44,9 @@ function reducer(state, action) {
 				...state,
 				isOpen: false,
 			};
+
+		default:
+			throw new Error("No existe dicha acción");
 	}
 }
 
