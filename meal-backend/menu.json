@@ -16,5 +16,11 @@
     "name": "Enchiladas",
     "price": 129,
     "description": "Platillo típico mexicano"
+  },
+  {
+    "id": 400,
+    "name": "Taquitos al Pastor",
+    "price": 25,
+    "description": "El mejor platillo del mundo mundial"
   }
 ]
