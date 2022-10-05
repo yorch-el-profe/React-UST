@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 
 const root = document.getElementById("backdrop");
 
-function BackdropPortal({ onClose }) {
-	return ReactDOM.createPortal(<Backdrop onClose={onClose} />, root);
+function BackdropPortal() {
+	return ReactDOM.createPortal(<Backdrop />, root);
 }
 
 export default BackdropPortal;
