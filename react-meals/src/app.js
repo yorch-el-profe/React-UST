@@ -15,9 +15,9 @@ function App() {
 
 	return (
 		<StateContext.Provider value={{ state, dispatch }}>
-			<Navbar />
-			<CartModal />
 			<BrowserRouter>
+				<Navbar />
+				<CartModal />
 				<Routes>
 					<Route path="/menu" element={<Menu />} />
 					<Route path="/checkout" element={<Checkout />} />
