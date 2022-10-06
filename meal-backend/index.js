@@ -12,7 +12,7 @@ app.get("/meals", function (_, response) {
 
 app.get("/meals/:id", function (request, response) {
 	const { id } = request.params;
-	const meal = meals.find((x) => x.id === id);
+	const meal = meals.find((x) => x.id.toString() === id.toString());
 	response.json(meal);
 });
 
