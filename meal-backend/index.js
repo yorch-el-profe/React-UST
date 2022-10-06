@@ -1,20 +1,24 @@
-const http = require("http");
+const express = require("express");
+const cors = require("cors");
 const meals = require("./menu.json");
 
-const server = http.createServer(function (request, response) {
-	if (request.url === "/meals") {
-		response.setHeader("Content-Type", "application/json");
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.write(JSON.stringify(meals));
-		response.end();
-	} else {
-		response.end();
-	}
+const app = express();
+
+app.use(cors());
+
+app.get("/meals", function (_, response) {
+	response.json(meals);
+});
+
+app.get("/meals/:id", function (request, response) {
+	const { id } = request.params;
+	const meal = meals.find((x) => x.id === id);
+	response.json(meal);
 });
 
 const port = process.env.PORT || 8080;
 
-server.listen(port, function () {
+app.listen(port, function () {
 	console.log(
 		`Servidor React Meals escuchando peticiones en el puerto ${port}`
 	);
