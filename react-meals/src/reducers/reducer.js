@@ -3,8 +3,6 @@ import actions from "./actions";
 function reducer(state, action) {
 	let meal, quantity, item, id;
 
-	console.log(action);
-
 	switch (action.type) {
 		case actions.ADD_MEAL:
 			meal = action.payload.meal;
@@ -43,6 +41,12 @@ function reducer(state, action) {
 			return {
 				...state,
 				isOpen: false,
+			};
+
+		case actions.SET_MEAL:
+			return {
+				...state,
+				meal: action.payload,
 			};
 
 		default:

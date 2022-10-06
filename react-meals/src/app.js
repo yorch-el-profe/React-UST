@@ -21,7 +21,7 @@ function App() {
 				<Routes>
 					<Route path="/menu" element={<Menu />} />
 					<Route path="/checkout" element={<Checkout />} />
-					<Route path="/meal" element={<Meal />} />
+					<Route path="/meal/:id" element={<Meal />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
