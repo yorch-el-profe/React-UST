@@ -5,6 +5,7 @@ import styles from "../styles/cart-modal.module.css";
 import StateContext from "../contexts/state";
 import { useContext } from "react";
 import actions from "../reducers/actions";
+import { Link } from "react-router-dom";
 
 function CartModal() {
 	const { state, dispatch } = useContext(StateContext);
@@ -69,7 +70,9 @@ function CartModal() {
 						<Button outline onClick={closeModal}>
 							Cerrar
 						</Button>
-						<Button>Ordenar</Button>
+						<Link to="/checkout" onClick={closeModal}>
+							<Button>Ordenar</Button>
+						</Link>
 					</li>
 				</ul>
 			</Modal>
