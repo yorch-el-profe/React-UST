@@ -4,7 +4,7 @@ import MenuContext from "../contexts/menu";
 import { useContext, useRef } from "react";
 import StateContext from "../contexts/state";
 import actions from "../reducers/actions";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
 	const inputs = useRef([]);
@@ -32,7 +32,7 @@ function Menu() {
 	}
 
 	return (
-		<div className={styles["menu-container"]}>
+		<div id="menu-container" className={styles["menu-container"]}>
 			<section className={styles.menu}>
 				{meals.map((item, index) => (
 					<article>
