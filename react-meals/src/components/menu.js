@@ -35,7 +35,7 @@ function Menu() {
 		<div id="menu-container" className={styles["menu-container"]}>
 			<section className={styles.menu}>
 				{meals.map((item, index) => (
-					<article>
+					<article key={item.id}>
 						<div className={styles["menu-item"]}>
 							<div onClick={() => goToMeal(item.id)}>
 								<h1>{item.name}</h1>

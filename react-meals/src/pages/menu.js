@@ -11,7 +11,6 @@ function MenuPage() {
 	useEffect(() => {
 		async function fetchMeals() {
 			const data = await request({ url: "http://localhost:8080/meals" });
-			console.log(data);
 			setMeals(data || []);
 		}
 
