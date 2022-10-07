@@ -11,35 +11,14 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("Menu", () => {
-	beforeEach(() => {
+	let dispatch;
+	let container;
+
+	beforeEach(async () => {
 		// jest.fn() crea un mock
 		window.fetch = jest.fn();
-	});
+		dispatch = jest.fn();
 
-	it("should render", async () => {
-		window.fetch.mockResolvedValueOnce({
-			json: async () => [],
-			ok: true,
-		});
-
-		const fakeDispatch = jest.fn();
-		const fakeState = {};
-
-		const { container } = await act(async () =>
-			render(
-				<StateContext.Provider
-					value={{ dispatch: fakeDispatch, state: fakeState }}
-				>
-					<Menu />
-				</StateContext.Provider>
-			)
-		);
-		const menuContainer = container.querySelector("#menu-container");
-
-		expect(menuContainer).toBeInTheDocument();
-	});
-
-	it("should display meals", async () => {
 		window.fetch.mockResolvedValueOnce({
 			json: async () => [
 				{
@@ -52,19 +31,23 @@ describe("Menu", () => {
 			ok: true,
 		});
 
-		const fakeDispatch = jest.fn();
-		const fakeState = {};
-
-		await act(async () => {
+		const rendered = await act(async () =>
 			render(
-				<StateContext.Provider
-					value={{ dispatch: fakeDispatch, state: fakeState }}
-				>
+				<StateContext.Provider value={{ dispatch, state: {} }}>
 					<Menu />
 				</StateContext.Provider>
-			);
-		});
+			)
+		);
 
+		container = rendered.container;
+	});
+
+	it("should render", async () => {
+		const menuContainer = container.querySelector("#menu-container");
+		expect(menuContainer).toBeInTheDocument();
+	});
+
+	it("should display meals", async () => {
 		const name = await screen.findByText("Enchiladas");
 		const description = await screen.findByText("Platillo mexicano");
 
@@ -73,41 +56,20 @@ describe("Menu", () => {
 	});
 
 	it("should add meals to cart", async () => {
-		window.fetch.mockResolvedValueOnce({
-			json: async () => [
-				{
-					id: 100,
-					name: "Enchiladas",
-					price: 100,
-					description: "Platillo mexicano",
-				},
-			],
-			ok: true,
-		});
-
-		const fakeDispatch = jest.fn();
-		const fakeState = {};
-
-		const { container } = await act(async () =>
-			render(
-				<StateContext.Provider
-					value={{ dispatch: fakeDispatch, state: fakeState }}
-				>
-					<Menu />
-				</StateContext.Provider>
-			)
-		);
-
 		const button = await screen.findByRole("button");
 		expect(button).toBeInTheDocument();
 
 		const input = container.querySelector('input[type="number"]');
 		expect(input).toBeInTheDocument();
 
+		userEvent.click(button);
+
+		expect(dispatch).not.toHaveBeenCalled();
+
 		input.value = "10";
 
 		userEvent.click(button);
 
-		expect(fakeDispatch).toHaveBeenCalled();
+		expect(dispatch).toHaveBeenCalled();
 	});
 });
